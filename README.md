@@ -1,4 +1,4 @@
-# AI日报 App
+# AIDaily
 
 一站式AI资讯聚合与消费平台，为AI从业者提供每日精选资讯。
 
@@ -49,7 +49,7 @@ API 运行在 http://localhost:3001
 ## 📁 项目结构
 
 ```
-ai-daily-app/
+AIDaily/
 ├── PRD.md                 # 产品需求文档
 ├── prototype/             # 原型设计
 │   └── index.html         # 可交互HTML原型
