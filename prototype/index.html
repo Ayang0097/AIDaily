@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI日报 - 原型设计</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'Inter', -apple-system, sans-serif; }
+    .phone-frame {
+      width: 375px;
+      height: 812px;
+      background: #f8fafc;
+      border-radius: 40px;
+      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+      overflow: hidden;
+    }
+    .active-tab { border-bottom: 2px solid #4f46e5; color: #4f46e5; }
+    .card-shadow { box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
+    .star { color: #fbbf24; }
+    .ai-badge {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      font-size: 10px;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+    .category-tag {
+      background: #e0e7ff;
+      color: #4f46e5;
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body class="bg-gray-900 min-h-screen p-8">
+  
+  <div class="flex gap-8 flex-wrap justify-center">
+    
+    <!-- 页面1：首页/今日日报 -->
+    <div class="flex flex-col items-center">
+      <h2 class="text-white text-lg mb-3 font-semibold">📱 首页/今日日报</h2>
+      <div class="phone-frame flex flex-col">
+        <!-- Status Bar -->
+        <div class="bg-white px-6 py-2 flex justify-between items-center text-xs">
+          <span>9:41</span>
+          <span>AI日报</span>
+          <span>🔋 📶 📡</span>
+        </div>
+        
+        <!-- Header -->
+        <div class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-5 py-4">
+          <div class="text-xs opacity-80">2026年3月28日 · 周五</div>
+          <h1 class="text-xl font-bold mt-1">今日AI日报</h1>
+          <p class="text-xs opacity-90 mt-1">共12条资讯 · 阅读约8分钟</p>
+        </div>
+        
+        <!-- Tabs -->
+        <div class="bg-white flex border-b">
+          <button class="flex-1 py-3 text-sm font-medium active-tab">概览</button>
+          <button class="flex-1 py-3 text-sm font-medium text-gray-500">模型</button>
+          <button class="flex-1 py-3 text-sm font-medium text-gray-500">工具</button>
+          <button class="flex-1 py-3 text-sm font-medium text-gray-500">观点</button>
+        </div>
+        
+        <!-- Content -->
+        <div class="flex-1 overflow-y-auto px-4 py-3 space-y-3 bg-gray-50">
+          
+          <!-- 置顶重要 -->
+          <div class="bg-white rounded-2xl p-4 card-shadow border-l-4 border-indigo-500">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="ai-badge">🤖 AI摘要</span>
+              <span class="text-xs text-gray-400">置顶</span>
+            </div>
+            <h3 class="font-semibold text-gray-800 mb-1">OpenAI发布GPT-5，性能全面超越GPT-4</h3>
+            <p class="text-xs text-gray-500 mb-2">来源：虎嗅 · ⭐⭐⭐⭐⭐</p>
+            <p class="text-xs text-gray-600 leading-relaxed">OpenAI在凌晨发布了下一代大语言模型，在推理能力、多模态理解、数学竞赛等多个基准测试中达到SOTA，参数规模据传达到10万亿...</p>
+            <div class="flex gap-2 mt-3">
+              <button class="text-xs text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full">查看详情</button>
+              <button class="text-xs text-gray-400">❤️ 收藏</button>
+              <button class="text-xs text-gray-400">↗️ 分享</button>
+            </div>
+          </div>
+          
+          <!-- 普通资讯 -->
+          <div class="bg-white rounded-2xl p-4 card-shadow">
+            <div class="flex items-start justify-between mb-2">
+              <div>
+                <span class="category-tag">技术突破</span>
+                <h3 class="font-medium text-gray-800 mt-2 text-sm">Anthropic发布Claude 3.5新版本</h3>
+                <p class="text-xs text-gray-400 mt-1">来源：爱范儿 · ⭐⭐⭐⭐</p>
+              </div>
+              <div class="text-yellow-400 text-sm">★★★★</div>
+            </div>
+            <p class="text-xs text-gray-600 leading-relaxed">新版本在代码生成能力上提升40%，支持更长上下文窗口...</p>
+            <div class="flex gap-2 mt-3">
+              <button class="text-xs text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full">详情</button>
+              <button class="text-xs text-gray-400">❤️</button>
+            </div>
+          </div>
+          
+          <!-- 工具推荐 -->
+          <div class="bg-white rounded-2xl p-4 card-shadow">
+            <div class="flex items-start justify-between mb-2">
+              <div>
+                <span class="category-tag bg-green-100 text-green-700">工具</span>
+                <h3 class="font-medium text-gray-800 mt-2 text-sm">🔧 Cursor新版本支持中文注释生成</h3>
+                <p class="text-xs text-gray-400 mt-1">来源：少数派 · ⭐⭐⭐</p>
+              </div>
+            </div>
+            <p class="text-xs text-gray-600 leading-relaxed">AI代码编辑器Cursor发布重大更新，现在支持自动生成中文注释...</p>
+          </div>
+          
+          <!-- 行业动态 -->
+          <div class="bg-white rounded-2xl p-4 card-shadow">
+            <div class="flex items-start justify-between mb-2">
+              <div>
+                <span class="category-tag bg-orange-100 text-orange-700">行业</span>
+                <h3 class="font-medium text-gray-800 mt-2 text-sm">💼 微软宣布AI商业化新战略</h3>
+                <p class="text-xs text-gray-400 mt-1">来源：36kr · ⭐⭐⭐⭐</p>
+              </div>
+            </div>
+            <p class="text-xs text-gray-600 leading-relaxed">微软CEO纳德拉宣布将Copilot深度整合到Office全家桶...</p>
+          </div>
+          
+        </div>
+        
+        <!-- Bottom Nav -->
+        <div class="bg-white border-t flex justify-around py-3">
+          <div class="flex flex-col items-center text-indigo-600">
+            <span class="text-xl">📰</span>
+            <span class="text-xs mt-1">日报</span>
+          </div>
+          <div class="flex flex-col items-center text-gray-400">
+            <span class="text-xl">📚</span>
+            <span class="text-xs mt-1">历史</span>
+          </div>
+          <div class="flex flex-col items-center text-gray-400">
+            <span class="text-xl">❤️</span>
+            <span class="text-xs mt-1">收藏</span>
+          </div>
+          <div class="flex flex-col items-center text-gray-400">
+            <span class="text-xl">⚙️</span>
+            <span class="text-xs mt-1">设置</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 页面2：日报详情 -->
+    <div class="flex flex-col items-center">
+      <h2 class="text-white text-lg mb-3 font-semibold">📱 日报详情</h2>
+      <div class="phone-frame flex flex-col">
+        <!-- Status Bar -->
+        <div class="bg-white px-6 py-2 flex justify-between items-center text-xs">
+          <span>9:41</span>
+          <span>AI日报</span>
+          <span>🔋 📶 📡</span>
+        </div>
+        
+        <!-- Header with back -->
+        <div class="bg-white px-4 py-3 flex items-center border-b">
+          <button class="text-xl mr-3">←</button>
+          <h1 class="font-semibold text-gray-800">资讯详情</h1>
+        </div>
+        
+        <!-- Content -->
+        <div class="flex-1 overflow-y-auto p-5 bg-white">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="ai-badge">🤖 AI摘要</span>
+            <span class="category-tag">技术突破</span>
+          </div>
+          
+          <h1 class="text-lg font-bold text-gray-900 mb-2">OpenAI发布GPT-5，性能全面超越GPT-4</h1>
+          
+          <div class="flex items-center gap-3 text-xs text-gray-500 mb-4">
+            <span>📅 2026-03-28</span>
+            <span>📍 虎嗅</span>
+            <span class="star">⭐⭐⭐⭐⭐</span>
+          </div>
+          
+          <div class="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-xl p-4 mb-4">
+            <div class="text-xs text-indigo-600 font-semibold mb-2">💡 AI一句话点评</div>
+            <p class="text-sm text-gray-700 italic">"GPT-5的发布标志着AGI竞赛进入新阶段，但更值得关注的是其推理效率的提升——参数大了10倍，推理成本仅增加3倍，这才是真正的突破。"</p>
+          </div>
+          
+          <div class="bg-gray-50 rounded-xl p-4 mb-4">
+            <div class="text-xs text-gray-500 font-semibold mb-2">📝 完整摘要</div>
+            <p class="text-sm text-gray-700 leading-relaxed">OpenAI在今日凌晨正式发布了下一代大语言模型GPT-5。该模型在多项基准测试中刷新SOTA记录，包括MMLU（94.7%）、HumanEval（92.3%）、MATH（87.2%）等关键指标。据官方透露，GPT-5采用全新的稀疏注意力机制和混合专家架构，在保持高质量输出的同时大幅提升了推理效率...</p>
+          </div>
+          
+          <div class="border-t pt-4 mt-4">
+            <h3 class="font-semibold text-gray-800 mb-2 text-sm">🔗 原文链接</h3>
+            <a href="#" class="text-indigo-600 text-xs break-all">https://www.huxiu.com/article/2345678.html</a>
+          </div>
+          
+          <div class="flex gap-3 mt-6">
+            <button class="flex-1 bg-indigo-600 text-white py-3 rounded-xl text-sm font-medium">❤️ 收藏</button>
+            <button class="flex-1 bg-gray-100 text-gray-700 py-3 rounded-xl text-sm font-medium">↗️ 分享</button>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+    
+    <!-- 页面3：历史/搜索 -->
+    <div class="flex flex-col items-center">
+      <h2 class="text-white text-lg mb-3 font-semibold">📱 历史日报</h2>
+      <div class="phone-frame flex flex-col">
+        <!-- Status Bar -->
+        <div class="bg-white px-6 py-2 flex justify-between items-center text-xs">
+          <span>9:41</span>
+          <span>AI日报</span>
+          <span>🔋 📶 📡</span>
+        </div>
+        
+        <!-- Header -->
+        <div class="bg-white px-4 py-3 border-b">
+          <h1 class="font-semibold text-gray-800">历史日报</h1>
+        </div>
+        
+        <!-- Search -->
+        <div class="bg-white px-4 py-3 border-b">
+          <div class="bg-gray-100 rounded-xl px-4 py-2 flex items-center">
+            <span class="text-gray-400 mr-2">🔍</span>
+            <input type="text" placeholder="搜索历史资讯..." class="bg-transparent flex-1 text-sm outline-none">
+          </div>
+        </div>
+        
+        <!-- Calendar Strip -->
+        <div class="bg-white px-4 py-3 border-b flex gap-2 overflow-x-auto">
+          <div class="flex-shrink-0 text-center px-3 py-2">
+            <div class="text-xs text-gray-400">一</div>
+            <div class="text-sm font-medium">24</div>
+          </div>
+          <div class="flex-shrink-0 text-center px-3 py-2">
+            <div class="text-xs text-gray-400">二</div>
+            <div class="text-sm font-medium">25</div>
+          </div>
+          <div class="flex-shrink-0 text-center px-3 py-2">
+            <div class="text-xs text-gray-400">三</div>
+            <div class="text-sm font-medium">26</div>
+          </div>
+          <div class="flex-shrink-0 text-center px-3 py-2 bg-indigo-600 text-white rounded-xl">
+            <div class="text-xs text-indigo-200">四</div>
+            <div class="text-sm font-bold">27</div>
+          </div>
+          <div class="flex-shrink-0 text-center px-3 py-2">
+            <div class="text-xs text-gray-400">五</div>
+            <div class="text-sm font-medium">28</div>
+          </div>
+          <div class="flex-shrink-0 text-center px-3 py-2 text-gray-300">
+            <div class="text-xs">六</div>
+            <div class="text-sm">29</div>
+          </div>
+          <div class="flex-shrink-0 text-center px-3 py-2 text-gray-300">
+            <div class="text-xs">日</div>
+            <div class="text-sm">30</div>
+          </div>
+        </div>
+        
+        <!-- List -->
+        <div class="flex-1 overflow-y-auto px-4 py-3 space-y-3 bg-gray-50">
+          
+          <div class="bg-white rounded-xl p-4 card-shadow">
+            <div class="flex justify-between items-start mb-2">
+              <div>
+                <div class="text-xs text-gray-400">3月27日 · 周四</div>
+                <h3 class="font-medium text-gray-800 mt-1">AI日报 #142</h3>
+              </div>
+              <span class="text-xs bg-green-100 text-green-700 px-2 py-1 rounded">8条</span>
+            </div>
+            <p class="text-xs text-gray-500">GPT-5发布预告 · Claude新功能 · Midjourney V6...</p>
+          </div>
+          
+          <div class="bg-white rounded-xl p-4 card-shadow">
+            <div class="flex justify-between items-start mb-2">
+              <div>
+                <div class="text-xs text-gray-400">3月26日 · 周三</div>
+                <h3 class="font-medium text-gray-800 mt-1">AI日报 #141</h3>
+              </div>
+              <span class="text-xs bg-green-100 text-green-700 px-2 py-1 rounded">10条</span>
+            </div>
+            <p class="text-xs text-gray-500">Gemini Pro开放 · 开源模型突破 · AI硬件...</p>
+          </div>
+          
+          <div class="bg-white rounded-xl p-4 card-shadow">
+            <div class="flex justify-between items-start mb-2">
+              <div>
+                <div class="text-xs text-gray-400">3月25日 · 周二</div>
+                <h3 class="font-medium text-gray-800 mt-1">AI日报 #140</h3>
+              </div>
+              <span class="text-xs bg-green-100 text-green-700 px-2 py-1 rounded">12条</span>
+            </div>
+            <p class="text-xs text-gray-500">AI Agent爆发 · 自动编程工具 · 算力竞争...</p>
+          </div>
+          
+        </div>
+        
+        <!-- Bottom Nav -->
+        <div class="bg-white border-t flex justify-around py-3">
+          <div class="flex flex-col items-center text-gray-400">
+            <span class="text-xl">📰</span>
+            <span class="text-xs mt-1">日报</span>
+          </div>
+          <div class="flex flex-col items-center text-indigo-600">
+            <span class="text-xl">📚</span>
+            <span class="text-xs mt-1">历史</span>
+          </div>
+          <div class="flex flex-col items-center text-gray-400">
+            <span class="text-xl">❤️</span>
+            <span class="text-xs mt-1">收藏</span>
+          </div>
+          <div class="flex flex-col items-center text-gray-400">
+            <span class="text-xl">⚙️</span>
+            <span class="text-xs mt-1">设置</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+  
+  <div class="text-center mt-8 text-gray-400 text-sm">
+    <p>📱 移动端原型演示 · 点击可交互（演示用静态页面）</p>
+    <p class="mt-1">完整交互原型后续使用Figma交付</p>
+  </div>
+  
+</body>
+</html>

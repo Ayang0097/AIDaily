@@ -1,0 +1,208 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  body {
+    @apply bg-gray-50 text-gray-900 antialiased;
+  }
+  
+  /* Dark mode styles */
+  .dark body {
+    @apply bg-gray-900 text-gray-100;
+  }
+  
+  .dark .bg-white {
+    @apply bg-gray-800;
+  }
+  
+  .dark .bg-gray-50 {
+    @apply bg-gray-900;
+  }
+  
+  .dark .bg-gray-100 {
+    @apply bg-gray-700;
+  }
+  
+  .dark .text-gray-800 {
+    @apply text-gray-100;
+  }
+  
+  .dark .text-gray-600 {
+    @apply text-gray-300;
+  }
+  
+  .dark .text-gray-500 {
+    @apply text-gray-400;
+  }
+  
+  .dark .text-gray-400 {
+    @apply text-gray-500;
+  }
+  
+  .dark .border-gray-200 {
+    @apply border-gray-700;
+  }
+  
+  .dark .border-gray-100 {
+    @apply border-gray-800;
+  }
+}
+
+@layer components {
+  .ai-badge {
+    @apply bg-gradient-to-r from-indigo-500 to-purple-500 text-white text-xs px-2 py-0.5 rounded;
+  }
+  
+  .category-tag {
+    @apply text-xs px-2.5 py-1 rounded-full font-medium;
+  }
+  
+  .card-shadow {
+    @apply shadow-sm hover:shadow-md transition-shadow duration-200;
+  }
+  
+  .dark .card-shadow {
+    @apply shadow-gray-900/50;
+  }
+  
+  .nav-item {
+    @apply flex flex-col items-center text-xs;
+  }
+  
+  .nav-item-active {
+    @apply text-indigo-600;
+  }
+  
+  .dark .nav-item-active {
+    @apply text-indigo-400;
+  }
+  
+  .nav-item-inactive {
+    @apply text-gray-400;
+  }
+  
+  /* Pull to refresh */
+  .pull-to-refresh {
+    @apply overflow-hidden relative;
+  }
+  
+  .pull-indicator {
+    @apply absolute top-0 left-0 right-0 h-0 overflow-hidden transition-all duration-200;
+  }
+  
+  .pull-indicator.pulling {
+    @apply h-16;
+  }
+  
+  .pull-indicator.refreshing {
+    @apply h-16;
+  }
+  
+  /* AI Chat */
+  .ai-chat-bubble {
+    @apply bg-gradient-to-r from-indigo-50 to-purple-50 rounded-2xl p-4 mb-3;
+  }
+  
+  .dark .ai-chat-bubble {
+    @apply from-indigo-900/30 to-purple-900/30;
+  }
+  
+  /* Empty state */
+  .empty-state {
+    @apply text-center py-16;
+  }
+  
+  .dark .empty-state {
+    @apply text-gray-400;
+  }
+}
+
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Custom animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(-25%); animation-timing-function: cubic-bezier(0.8, 0, 1, 1); }
+  50% { transform: translateY(0); animation-timing-function: cubic-bezier(0, 0, 0.2, 1); }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+.animate-bounce {
+  animation: bounce 1s infinite;
+}
+
+/* Date picker styles */
+.date-picker-item {
+  @apply flex-shrink-0 text-center px-3 py-2 rounded-xl cursor-pointer transition-all;
+}
+
+.date-picker-item-active {
+  @apply bg-indigo-600 text-white;
+}
+
+.date-picker-item-inactive {
+  @apply text-gray-600 hover:bg-gray-100;
+}
+
+.dark .date-picker-item-inactive {
+  @apply text-gray-400 hover:bg-gray-700;
+}
+
+/* Toggle switch */
+.toggle-switch {
+  @apply w-12 h-6 rounded-full transition-colors relative;
+}
+
+.toggle-switch.active {
+  @apply bg-indigo-600;
+}
+
+.toggle-switch.inactive {
+  @apply bg-gray-300;
+}
+
+.dark .toggle-switch.inactive {
+  @apply bg-gray-600;
+}
+
+.toggle-knob {
+  @apply absolute top-1 w-4 h-4 bg-white rounded-full transition-transform shadow;
+}
+
+/* Gradient text */
+.gradient-text {
+  @apply bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent;
+}
+
+.dark .gradient-text {
+  @apply from-indigo-400 to-purple-400;
+}
